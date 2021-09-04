@@ -1,0 +1,2 @@
+class ThemeWord < ApplicationRecord
+end

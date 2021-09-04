@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  syllabary_result: MyString
+  great_man_result: MyString
+  standard_result: MyString
+
+two:
+  syllabary_result: MyString
+  great_man_result: MyString
+  standard_result: MyString
