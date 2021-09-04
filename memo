@@ -1,5 +1,5 @@
 rotes.rb
-Rails.application.routes.draw do
+
 
   root 'homes#top'
 
@@ -10,23 +10,26 @@ Rails.application.routes.draw do
   }
   
   resources :players, only: [:show, :edit, :update]
-  resources :games, only: [:index] do
+  resources :games, only: [:index]
+  
+  # タイムアタックモード
+  get 'games/syllabaries' # 50音モード
+  get 'games/greats_men' # 偉人の名言モード
+  get 'games/standards' # スタンダードモード
+  
+  # フェードアウトモード
+  get 'games/fade_outs' # FOモード
+  
+  # クリエイトモード
+  get 'games/creates' # クリエイトモード
     
-    # タイムアタックモード
-    get '/syllabaries' => 'games#syllabaries' # 50音モード
-    get '/greats_men' => 'games#greats_men' # 偉人の名言モード
-    get '/standards' => 'games#standards' # スタンダードモード
-    
-    # フェードアウトモード
-    get '/fade_outs' => 'games#fade_outs' # FOモード
-    
-    # クリエイトモード
-    get '/creates' => 'games#creates' # クリエイトモード
-  end  
+
 
   resources :theme_groups, only: [:index, :new, :edit, :update, :destroy]
   resources :theme_words, only: [:index, :new, :edit, :update, :destroy]
 end
+# お問い合わせ機能あとから付ける
+
 
 rails db:migrate
 rails g devise Player
@@ -52,12 +55,7 @@ rails g model Group group_name:string player_id:integer
 
 
 
-
-
-
-
-
-                     root GET    /                                                                                        homes#top
+                      root GET    /                                                                                        homes#top
         new_player_session GET    /players/sign_in(.:format)                                                               players/sessions#new
             player_session POST   /players/sign_in(.:format)                                                               players/sessions#create
     destroy_player_session DELETE /players/sign_out(.:format)                                                              players/sessions#destroy
@@ -77,12 +75,12 @@ cancel_player_registration GET    /players/cancel(.:format)                     
                     player GET    /players/:id(.:format)                                                                   players#show
                            PATCH  /players/:id(.:format)                                                                   players#update
                            PUT    /players/:id(.:format)                                                                   players#update
-          game_syllabaries GET    /games/:game_id/syllabaries(.:format)                                                    games#syllabaries
-           game_greats_men GET    /games/:game_id/greats_men(.:format)                                                     games#greats_men
-            game_standards GET    /games/:game_id/standards(.:format)                                                      games#standards
-            game_fade_outs GET    /games/:game_id/fade_outs(.:format)                                                      games#fade_outs
-              game_creates GET    /games/:game_id/creates(.:format)                                                        games#creates
                      games GET    /games(.:format)                                                                         games#index
+         games_syllabaries GET    /games/syllabaries(.:format)                                                             games#syllabaries
+          games_greats_men GET    /games/greats_men(.:format)                                                              games#greats_men
+           games_standards GET    /games/standards(.:format)                                                               games#standards
+           games_fade_outs GET    /games/fade_outs(.:format)                                                               games#fade_outs
+             games_creates GET    /games/creates(.:format)                                                                 games#creates
               theme_groups GET    /theme_groups(.:format)                                                                  theme_groups#index
            new_theme_group GET    /theme_groups/new(.:format)                                                              theme_groups#new
           edit_theme_group GET    /theme_groups/:id/edit(.:format)                                                         theme_groups#edit
@@ -95,3 +93,6 @@ cancel_player_registration GET    /players/cancel(.:format)                     
                 theme_word PATCH  /theme_words/:id(.:format)                                                               theme_words#update
                            PUT    /theme_words/:id(.:format)                                                               theme_words#update
                            DELETE /theme_words/:id(.:format)                                                               theme_words#destroy
+                           
+rails g migration Addカラム名Toテーブル名 カラム名:カラムのデータ型
+rails g migration AddPlayerNameToPlayer player_name:string
