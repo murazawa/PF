@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'players/show'
+  get 'players/edit'
   root 'homes#top'
 
   devise_for :players, :controllers => {

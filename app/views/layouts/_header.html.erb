@@ -1,7 +1,7 @@
 <% if player_signed_in? %>
   <%= link_to "Type game", root_path %>
   <%= link_to "モード一覧", games_path %>
-  <%= link_to "マイページ", root_path %>
+  <%= link_to "マイページ", player_path(current_player) %>
   <%= link_to "お題グループ一覧", theme_groups_path %>
   <%= link_to 'ログアウト', destroy_player_session_path, method: :delete %>
 <% else %>
