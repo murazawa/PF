@@ -1,5 +1,11 @@
 <h1>とっぷぺーじ</h1>
-<%= link_to "ゲストでプレイ", games_path %>
-<%= link_to "ログインしてプレイ",new_player_session_path %>
-<%= link_to "新規登録", new_player_registration_path %>
-<%= link_to 'ログアウト', destroy_player_session_path, method: :delete %>
+<% if player_signed_in? %>
+  <%= link_to "ゲームを始める", games_path %>
+<% else %>
+  <%= link_to "ゲストでプレイ", games_path %>
+  <%= link_to "ログインしてプレイ",new_player_session_path %>
+  <%= link_to "新規登録", new_player_registration_path %>
+  <%= link_to 'ログアウト', destroy_player_session_path, method: :delete %>
+<% end %>
+
+
