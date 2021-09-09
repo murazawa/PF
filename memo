@@ -97,3 +97,4 @@ cancel_player_registration GET    /players/cancel(.:format)                     
 rails g migration Addカラム名Toテーブル名 カラム名:カラムのデータ型
 rails g migration AddPlayerNameToPlayer player_name:string
 
+rails g migration Removeカラム名Fromテーブル名 カラム名:型
