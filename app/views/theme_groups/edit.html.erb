@@ -1,2 +1,12 @@
-<h1>ThemeGroups#edit</h1>
-<p>Find me in app/views/theme_groups/edit.html.erb</p>
+<h1>グループ名編集</h1>
+<%= form_with model: @group, url: theme_group_path, method: :PATCH, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :グループ名 %>
+    <%= f.text_field :group_name, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存する" %>
+  </div>
+<% end %>

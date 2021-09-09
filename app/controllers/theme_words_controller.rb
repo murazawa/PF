@@ -1,8 +1,8 @@
 class ThemeWordsController < ApplicationController
   def index
-  end
+    @word = ThemeWord.new
+    @theme_word = ThemeWord.all
 
-  def new
   end
 
   def edit
@@ -11,6 +11,22 @@ class ThemeWordsController < ApplicationController
   def update
   end
 
+  def create
+    @word = ThemeWord.new(theme_word_params)
+    # binding.pry
+    @word.save!
+    redirect_back(fallback_location: root_path)
+
+  end
+
   def destroy
+    @words = ThemeWord.find(params[:id])
+    @words.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
+  private
+  def theme_word_params
+    params.require(:theme_word).permit(:read_word, :type_word)
   end
 end

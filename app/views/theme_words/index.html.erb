@@ -1,6 +1,31 @@
 <h1>お題一覧</h1>
-<%= link_to "追加する" %>
-<%= link_to "削除する" %>
-<%= link_to "グループ一覧に戻る", theme_groups_path %>
-<%= link_to "クリエイト早打ちスタート", games_creates %>
-<%= link_to "お題内容を変更する", root_path %>
+
+<%= form_with model: @word, url: theme_group_theme_words_path, method: :POST, local: true do |f| %>
+  <div class="field">
+    <%= f.label :読み方 %>
+    <%= f.text_field :read_word, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :入力する文字 %>
+    <%= f.text_field :type_word, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "お題を追加する" %>
+  </div>
+<% end %>
+
+
+
+
+<% @theme_word.each do |word| %>
+
+  <p>読み：<%= word.read_word %></p>
+  <p>入力：<%= word.type_word %></p>
+  <p><%= link_to "お題内容を変更する", "/theme_groups/3/theme_words/3/edit" %></p>
+  <p><%#= link_to "削除する", theme_group_theme_word_path(word), method: :DELETE %></p>
+
+<% end %>
+
+<p><%= link_to "グループ一覧に戻る", theme_groups_path %></p>
+<p><%= link_to "クリエイト早打ちスタート", games_creates_path %></p>

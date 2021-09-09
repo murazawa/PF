@@ -67,3 +67,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'pry-rails'
+gem 'jquery-rails'
+
+gem 'jquery-ui-rails'

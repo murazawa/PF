@@ -1,9 +1,29 @@
 <h1>お題グループ一覧</h1>
 
-<%= link_to "作ったお題を見る", theme_words_path %>
-<%= link_to "グループを削除する" %>
-<%= link_to "クリエイト10問早打ちへ", games_creates_path %>
-<%= link_to "グループ新規作成" %>
 
-<!--後で書き換える-->
-<%= link_to "グループ名を変更する", root_path %>
+<%= form_with model: @group, url: theme_groups_path, method: :POST, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :新しいグループ名 %>
+    <%= f.text_field :group_name, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "グループを作成する" %>
+  </div>
+<% end %>
+
+<% @group_names.each do |group| %>
+  <p><%= group.group_name %></p>
+  <%= link_to "グループ名を変更する", edit_theme_group_path(group) %>
+  <%= link_to "削除する", theme_group_path(group), method: :DELETE %>
+  <%# binding.pry %>
+  <%= link_to "作ったお題を見る", theme_group_theme_words_path(group) %>
+  <% end %>
+
+<p></p>
+
+<p><%= link_to "クリエイト10問早打ちへ", games_creates_path %>
+<!--後で書き換える--></p>
+
+

@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_144046) do
     t.text "read_word"
     t.integer "create_id"
     t.integer "group_id"
+    t.integer "theme_group_id"
+    t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
