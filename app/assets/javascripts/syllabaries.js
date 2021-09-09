@@ -17,7 +17,7 @@ $(function() {
 
   // 問題数
   let question_number = 1;
-  let question_limit = 5;
+  let question_limit = 9;
   let done_questions = {};
 
   // カウントする変数を３つ宣言
@@ -30,7 +30,6 @@ $(function() {
 
   // 問題
   const MONDAI_LIST = [
-    {yomi:'あいうえお', text:'aiueo'},
     {yomi:'あいうえお', text:'aiueo'},
     {yomi:'かきくけこ', text:'kakikukeko'},
     {yomi:'さしすせそ', text:'sasisuseso'},
@@ -104,9 +103,9 @@ $(function() {
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*10);
+    let random_number = Math.floor(Math.random()*9);
     while (done_questions[random_number]!== undefined) {
-      random_number = Math.floor(Math.random()*10);
+      random_number = Math.floor(Math.random()*9);
     }
     done_questions[random_number] = random_number
     return random_number;
@@ -121,7 +120,7 @@ $(function() {
   function init(){
     char_index = 1;
     question_number = 1;
-    question_limit = 5;
+    question_limit = 9;
     done_question = {};
     typing_cnt = 0;
     correct_cnt = 0;
@@ -129,7 +128,7 @@ $(function() {
     start_game = false;
     start_time = 0;
 
-    $countSelect.val('5');
+    $countSelect.val('9');
 
     changeQuestionWord(getQuestionNumber());
     $finishPanel.addClass('hidden');
