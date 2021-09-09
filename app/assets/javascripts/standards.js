@@ -30,19 +30,31 @@ $(function() {
 
   // 問題
   const MONDAI_LIST = [
-    {yomi:'あいうえお', text:'aiueo'},
-    {yomi:'あいうえお', text:'aiueo'},
-    {yomi:'かきくけこ', text:'kakikukeko'},
-    {yomi:'さしすせそ', text:'sasisuseso'},
-    {yomi:'たちつてと', text:'tatituteto'},
-    {yomi:'なにぬねの', text:'naninuneno'},
-    {yomi:'はひふへほ', text:'hahihuheho'},
-    {yomi:'まみむめも', text:'mamimumemo'},
-    {yomi:'やゆよ', text:'yayuyo'},
-    {yomi:'らりるれろ', text:'rarirurero'},
-    {yomi:'わをん', text:'wawonn'},
-  ];
+    {yomi:'アーモンド', text:'a-mondo'}, {yomi:'赤とんぼ', text:'akatonbo'},
+    {yomi:'天の川', text:'amanogawa'}, {yomi:'アンケート', text:'anke-to'},
+    {yomi:'腕時計', text:'udedokei'}, {yomi:'浮き袋', text:'ukibukuro'},
+    {yomi:'映画館', text:'eigakann'}, {yomi:'おこづかい', text:'okozukai'},
+    {yomi:'怪獣', text:'kaijuu'}, {yomi:'カルシウム', text:'karusiumu'},
+    {yomi:'休憩', text:'kyuukei'}, {yomi:'教育', text:'kyouiku'},
+    {yomi:'掲示板', text:'keijibann'}, {yomi:'ケチャップ', text:'ketyappu'},
+    {yomi:'昆虫', text:'kontyuu'}, {yomi:'コガネムシ', text:'koganemusi'},
+    {yomi:'さくらんぼ', text:'sakuranbo'}, {yomi:'サバイバル', text:'sabaibaru'},
+    {yomi:'自動車', text:'jidousya'}, {yomi:'宿題', text:'syukudai'},
+    {yomi:'ソーセージ', text:'so-se-ji'}, {yomi:'損傷', text:'sonsyou'},
+    {yomi:'竹とんぼ', text:'taketonbo'}, {yomi:'着席', text:'tyakuseki'},
+    {yomi:'トロピカル', text:'toropikaru'}, {yomi:'流れ星', text:'nagarebosi'},
+    {yomi:'人形', text:'ningyou'}, {yomi:'ヌンチャク', text:'nuntyaku'},
+    {yomi:'燃料', text:'nenryou'}, {yomi:'のぼり坂', text:'noborizaka'},
+    {yomi:'ファミコン', text:'famikonn'}, {yomi:'文鳥', text:'buntyou'},
+    {yomi:'ひな祭り', text:'hinamaturi'}, {yomi:'ハリネズミ', text:'harinezumi'},
+    {yomi:'包丁', text:'houtyou'}, {yomi:'マヨネーズ', text:'mayone-zu'},
+    {yomi:'未成年', text:'miseinenn'}, {yomi:'虫めがね', text:'musimegane'},
+    {yomi:'明太子', text:'mentaiko'}, {yomi:'モルモット', text:'morumotto'},
+    {yomi:'ヤンクック', text:'yankukku'}, {yomi:'ヨーグルト', text:'yo-guruto'},
+    {yomi:'ランニング', text:'rannningu'}, {yomi:'立候補', text:'rikkouho'},
+    {yomi:'ワイシャツ', text:'waisyatu'}, {yomi:'露天風呂', text:'rotenburo'},
 
+  ];
   // 最初は問題を隠すhide()
   $yomi.hide();
   $mondai.hide();
@@ -104,9 +116,9 @@ $(function() {
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*10);
+    let random_number = Math.floor(Math.random()*45);
     while (done_questions[random_number]!== undefined) {
-      random_number = Math.floor(Math.random()*10);
+      random_number = Math.floor(Math.random()*45);
     }
     done_questions[random_number] = random_number
     return random_number;

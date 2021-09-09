@@ -3,7 +3,7 @@ class ThemeGroupsController < ApplicationController
   def index
     @group_names = Group.all
     @group = Group.new
-    @word = ThemeWord.where(:id => params[:theme_group_id]).first
+    # @word = ThemeWord.where(:id => params[:theme_group_id]).first
     # @word = ThemeWord.new
 
   end

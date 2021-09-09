@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
 
   resources :theme_groups, only: [:index, :edit, :update, :create, :destroy] do
-    resources :theme_words, only: [:index, :edit, :update, :create, :destroy]
+    resources :theme_words, only: [:index, :show, :edit, :update, :create, :destroy]
+
   end
 end
 # お問い合わせ機能あとから付ける

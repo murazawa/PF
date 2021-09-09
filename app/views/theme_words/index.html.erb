@@ -22,8 +22,10 @@
 
   <p>読み：<%= word.read_word %></p>
   <p>入力：<%= word.type_word %></p>
-  <p><%= link_to "お題内容を変更する", "/theme_groups/3/theme_words/3/edit" %></p>
-  <p><%#= link_to "削除する", theme_group_theme_word_path(word), method: :DELETE %></p>
+    <%# binding.pry %>
+  <p><%#= link_to "お題内容を変更する", edit_theme_group_theme_word_path(word) %></p>
+  <p><%= link_to "お題内容を変更する", edit_theme_group_theme_word_path(@groups, word) %></p>
+  <p><%= link_to "削除する", theme_group_theme_word_path(@groups,word), method: :DELETE %></p>
 
 <% end %>
 

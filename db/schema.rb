@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_144046) do
+ActiveRecord::Schema.define(version: 2021_09_09_081930) do
 
   create_table "creates", force: :cascade do |t|
     t.string "create_result"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_144046) do
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "theme_word_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -50,9 +51,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_144046) do
   create_table "theme_words", force: :cascade do |t|
     t.text "type_word"
     t.text "read_word"
-    t.integer "create_id"
     t.integer "group_id"
-    t.integer "theme_group_id"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,21 +8,21 @@ rotes.rb
   :sessions => 'players/sessions',
   :passwords => 'players/passwords'
   }
-  
+
   resources :players, only: [:show, :edit, :update]
   resources :games, only: [:index]
-  
+
   # タイムアタックモード
   get 'games/syllabaries' # 50音モード
   get 'games/greats_men' # 偉人の名言モード
   get 'games/standards' # スタンダードモード
-  
+
   # フェードアウトモード
   get 'games/fade_outs' # FOモード
-  
+
   # クリエイトモード
   get 'games/creates' # クリエイトモード
-    
+
 
 
   resources :theme_groups, only: [:index, :new, :edit, :update, :destroy]
@@ -93,6 +93,8 @@ cancel_player_registration GET    /players/cancel(.:format)                     
                 theme_word PATCH  /theme_words/:id(.:format)                                                               theme_words#update
                            PUT    /theme_words/:id(.:format)                                                               theme_words#update
                            DELETE /theme_words/:id(.:format)                                                               theme_words#destroy
-                           
+
 rails g migration Addカラム名Toテーブル名 カラム名:カラムのデータ型
 rails g migration AddPlayerNameToPlayer player_name:string
+
+rails g migration Removeカラム名Fromテーブル名 カラム名:型
