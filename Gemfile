@@ -71,3 +71,7 @@ gem 'pry-rails'
 gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
+gem 'gon'
+
+
+gem 'bootstrap', '~> 4.5'

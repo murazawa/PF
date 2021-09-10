@@ -15,5 +15,6 @@ class GamesController < ApplicationController
   end
 
   def creates
+
   end
 end

@@ -19,6 +19,18 @@
 /*  box-sizing: border-box;*/
 /*}*/
 
+@import "bootstrap";
+
+
+* {
+
+  box-sizing: border-box;
+}
+
+
+
+
+
 #main {
   text-align: center;
 }
