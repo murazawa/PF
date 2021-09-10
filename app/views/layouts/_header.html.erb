@@ -1,12 +1,19 @@
-<% if player_signed_in? %>
-  <%= link_to "Type game", root_path %>
-  <%= link_to "モード一覧", games_path %>
-  <%= link_to "マイページ", player_path(current_player) %>
-  <%= link_to "お題グループ一覧", theme_groups_path %>
-  <%= link_to 'ログアウト', destroy_player_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Type game", root_path %>
-  <%= link_to "モード一覧", games_path %>
-  <%= link_to "新規登録", new_player_registration_path %>
-  <%= link_to "ログイン", new_player_session_path %>
-<% end %>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+      <h1><%= link_to "Type game", root_path, class:"navbar-brand" %></h1>
+      <ul class="navbar-nav justify-content-end">
+        <% if player_signed_in? %>
+          <li class:"nav-item"><%= link_to "モード一覧", games_path, class:"nav-link" %></li>
+          <li class:"nav-item"><%= link_to "マイページ", player_path(current_player), class:"nav-link" %></li>
+          <%#= link_to "お題グループ一覧", theme_groups_path %>
+          <li class:"nav-item"><%= link_to 'ログアウト', destroy_player_session_path, method: :delete, class:"nav-link" %></li>
+        <% else %>
+          <li class:"nav-item"><%= link_to "モード一覧", games_path, class:"nav-link" %></li>
+          <li class:"nav-item"><%= link_to "新規登録", new_player_registration_path, class:"nav-link" %></li>
+          <li class:"nav-item"><%= link_to "ログイン", new_player_session_path, class:"nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

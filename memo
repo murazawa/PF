@@ -98,3 +98,52 @@ rails g migration Addカラム名Toテーブル名 カラム名:カラムのデ�
 rails g migration AddPlayerNameToPlayer player_name:string
 
 rails g migration Removeカラム名Fromテーブル名 カラム名:型
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+      <h1><%= link_to root_path, class:"navbar-brand" do %>
+          <%= image_tag 'Nagano Cake.jpg', :size =>'80x80' %>
+          <% end %>
+      </h1>
+      <ul class="navbar-nav justify-content-end">
+          <% if customer_signed_in? %>
+            <li class:"nav-item"><%= link_to 'マイページ', new_customer_session_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to '商品一覧', items_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to 'カート', cart_items_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"nav-link" %></li>
+            <div class="search-form">
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword, value: @keyword %>
+                <%= f.submit "Search", class: "btn btn-outline-primary" %>
+              <% end %>
+            </div>
+          <% elsif admin_signed_in? %>
+            <li class:"nav-item"><%= link_to '商品一覧', admin_items_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to '会員一覧', admin_customers_index_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
+            <div class="search-form">
+              <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword, value: @keyword %>
+                <%= f.submit "Search", class: "btn btn-outline-primary" %>
+              <% end %>
+            </div>
+          <% else %>
+            <li class:"nav-item"><%= link_to 'About', about_path, class:"nav-link"  %></li>
+            <li class:"nav-item"><%= link_to '商品一覧', items_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to '新規登録', new_customer_registration_path, class:"nav-link" %></li>
+            <li class:"nav-item"><%= link_to 'ログイン', new_customer_session_path, class:"nav-link" %></li>
+            <div class="search-form">
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword, value: @keyword %>
+                <%= f.submit "Search", class: "btn btn-outline-primary" %>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
