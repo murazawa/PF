@@ -1,11 +1,12 @@
-<h1>とっぷぺーじ</h1>
+<div id="top">
+<h1 class="title">Type game</h1>
 <% if player_signed_in? %>
-  <%= link_to "ゲームを始める", games_path %>
+  <p class="in"><%= link_to "ゲームを始める", games_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %></p>
 <% else %>
-  <%= link_to "ゲストでプレイ", games_path %>
-  <%= link_to "ログインしてプレイ",new_player_session_path %>
-  <%= link_to "新規登録", new_player_registration_path %>
-  <%= link_to 'ログアウト', destroy_player_session_path, method: :delete %>
+  <p class="out"><%= link_to "ゲストでプレイ", games_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %></p>
+  <p class="out"><%= link_to "ログインしてプレイ",new_player_session_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %></p>
+  <p class="out"><%= link_to "新規登録", new_player_registration_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %></p>
 <% end %>
+</div>
 
-
+<p></p>class="btn btn-lg btn-secondary fw-bold border-white bg-white"

@@ -1,18 +1,21 @@
+<div id="top">
 <h1>モード一覧</h1>
+
+<div>
 <% if signed_in? %>
-  <%= link_to "50音ランダム早打ち", games_syllabaries_path %>
-  <%= link_to "偉人の名言のを打て", games_greats_men_path %>
-  <%= link_to "スタンダード10問", games_standards_path %>
-  <%= link_to "スタンダードFO", games_fade_outs_path %>
-  <%= link_to "クリエイト10問", games_creates_path %>
-  <%= link_to "お題を自作する", theme_groups_path %>
-  <%= link_to "マイページに戻る", player_path(current_player) %>
+  <%= link_to "50音ランダム早打ち", games_syllabaries_path,    class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "偉人の名言のを打て", games_greats_men_path,     class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "スタンダード10問", games_standards_path,        class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "スタンダードFO", games_fade_outs_path,          class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "お題を自作する", theme_groups_path,             class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "マイページに戻る", player_path(current_player), class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
 <% else %>
-  <%= link_to "50音ランダム早打ち", games_syllabaries_path %>
-  <%= link_to "偉人の名言のを打て", games_greats_men_path %>
-  <%= link_to "スタンダード10問", games_standards_path %>
-  <%= link_to "スタンダードFO", games_fade_outs_path %>
-  <%= link_to "クリエイト10問", games_creates_path %>
-  <%= link_to "ログインする", new_player_registration_path %>
-  <%= link_to "会員登録する", new_player_session_path %>
+  <%= link_to "50音ランダム早打ち", games_syllabaries_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "偉人の名言のを打て", games_greats_men_path,  class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "スタンダード10問", games_standards_path,     class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "スタンダードFO", games_fade_outs_path,       class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "ログインする", new_player_registration_path, class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+  <%= link_to "会員登録する", new_player_session_path,      class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
 <% end %>
+</div>
+</div>

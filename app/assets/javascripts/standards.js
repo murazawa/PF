@@ -1,8 +1,8 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  const $yomi = $('#yomi');
-  const $mondai = $('#mondai');
+  const $kana = $('#kana');
+  const $theme = $('#theme');
   const $finishPanel = $('#finish-panel');
   const $countSelect = $('#count-select');
   const $correctMessage = $('#correct-message');
@@ -29,35 +29,35 @@ $(function() {
   let start_time = 0;
 
   // 問題
-  const MONDAI_LIST = [
-    {yomi:'アーモンド', text:'a-mondo'}, {yomi:'赤とんぼ', text:'akatonbo'},
-    {yomi:'天の川', text:'amanogawa'}, {yomi:'アンケート', text:'anke-to'},
-    {yomi:'腕時計', text:'udedokei'}, {yomi:'浮き袋', text:'ukibukuro'},
-    {yomi:'映画館', text:'eigakann'}, {yomi:'おこづかい', text:'okozukai'},
-    {yomi:'怪獣', text:'kaijuu'}, {yomi:'カルシウム', text:'karusiumu'},
-    {yomi:'休憩', text:'kyuukei'}, {yomi:'教育', text:'kyouiku'},
-    {yomi:'掲示板', text:'keijibann'}, {yomi:'ケチャップ', text:'ketyappu'},
-    {yomi:'昆虫', text:'kontyuu'}, {yomi:'コガネムシ', text:'koganemusi'},
-    {yomi:'さくらんぼ', text:'sakuranbo'}, {yomi:'サバイバル', text:'sabaibaru'},
-    {yomi:'自動車', text:'jidousya'}, {yomi:'宿題', text:'syukudai'},
-    {yomi:'ソーセージ', text:'so-se-ji'}, {yomi:'損傷', text:'sonsyou'},
-    {yomi:'竹とんぼ', text:'taketonbo'}, {yomi:'着席', text:'tyakuseki'},
-    {yomi:'トロピカル', text:'toropikaru'}, {yomi:'流れ星', text:'nagarebosi'},
-    {yomi:'人形', text:'ningyou'}, {yomi:'ヌンチャク', text:'nuntyaku'},
-    {yomi:'燃料', text:'nenryou'}, {yomi:'のぼり坂', text:'noborizaka'},
-    {yomi:'ファミコン', text:'famikonn'}, {yomi:'文鳥', text:'buntyou'},
-    {yomi:'ひな祭り', text:'hinamaturi'}, {yomi:'ハリネズミ', text:'harinezumi'},
-    {yomi:'包丁', text:'houtyou'}, {yomi:'マヨネーズ', text:'mayone-zu'},
-    {yomi:'未成年', text:'miseinenn'}, {yomi:'虫めがね', text:'musimegane'},
-    {yomi:'明太子', text:'mentaiko'}, {yomi:'モルモット', text:'morumotto'},
-    {yomi:'ヤンクック', text:'yankukku'}, {yomi:'ヨーグルト', text:'yo-guruto'},
-    {yomi:'ランニング', text:'rannningu'}, {yomi:'立候補', text:'rikkouho'},
-    {yomi:'ワイシャツ', text:'waisyatu'}, {yomi:'露天風呂', text:'rotenburo'},
+  const THEME = [
+    {kana:'アーモンド', text:'a-mondo'}, {kana:'赤とんぼ', text:'akatonbo'},
+    {kana:'天の川', text:'amanogawa'}, {kana:'アンケート', text:'anke-to'},
+    {kana:'腕時計', text:'udedokei'}, {kana:'浮き袋', text:'ukibukuro'},
+    {kana:'映画館', text:'eigakann'}, {kana:'おこづかい', text:'okozukai'},
+    {kana:'怪獣', text:'kaijuu'}, {kana:'カルシウム', text:'karusiumu'},
+    {kana:'休憩', text:'kyuukei'}, {kana:'教育', text:'kyouiku'},
+    {kana:'掲示板', text:'keijibann'}, {kana:'ケチャップ', text:'ketyappu'},
+    {kana:'昆虫', text:'kontyuu'}, {kana:'コガネムシ', text:'koganemusi'},
+    {kana:'さくらんぼ', text:'sakuranbo'}, {kana:'サバイバル', text:'sabaibaru'},
+    {kana:'自動車', text:'jidousya'}, {kana:'宿題', text:'syukudai'},
+    {kana:'ソーセージ', text:'so-se-ji'}, {kana:'損傷', text:'sonsyou'},
+    {kana:'竹とんぼ', text:'taketonbo'}, {kana:'着席', text:'tyakuseki'},
+    {kana:'トロピカル', text:'toropikaru'}, {kana:'流れ星', text:'nagarebosi'},
+    {kana:'人形', text:'ningyou'}, {kana:'ヌンチャク', text:'nuntyaku'},
+    {kana:'燃料', text:'nenryou'}, {kana:'のぼり坂', text:'noborizaka'},
+    {kana:'ファミコン', text:'famikonn'}, {kana:'文鳥', text:'buntyou'},
+    {kana:'ひな祭り', text:'hinamaturi'}, {kana:'ハリネズミ', text:'harinezumi'},
+    {kana:'包丁', text:'houtyou'}, {kana:'マヨネーズ', text:'mayone-zu'},
+    {kana:'未成年', text:'miseinenn'}, {kana:'虫めがね', text:'musimegane'},
+    {kana:'明太子', text:'mentaiko'}, {kana:'モルモット', text:'morumotto'},
+    {kana:'ヤンクック', text:'yankukku'}, {kana:'ヨーグルト', text:'yo-guruto'},
+    {kana:'ランニング', text:'rannningu'}, {kana:'立候補', text:'rikkouho'},
+    {kana:'ワイシャツ', text:'waisyatu'}, {kana:'露天風呂', text:'rotenburo'},
 
   ];
   // 最初は問題を隠すhide()
-  $yomi.hide();
-  $mondai.hide();
+  $kana.hide();
+  $theme.hide();
   changeQuestionWord(getQuestionNumber());　//最初の問題の設定
 
   $countSelect.on('change', function(e) {
@@ -79,8 +79,8 @@ $(function() {
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
     $startMessage.hide();
     $countSelect.hide();
-    $yomi.show();
-    $mondai.show();
+    $kana.show();
+    $theme.show();
     start_game = true;
     start_time = performance.now();
     return;
@@ -145,8 +145,8 @@ $(function() {
 
     changeQuestionWord(getQuestionNumber());
     $finishPanel.addClass('hidden');
-    $yomi.hide();
-    $mondai.hide();
+    $kana.hide();
+    $theme.hide();
     $startMessage.show();
     $countSelect.show();
   }
@@ -155,8 +155,8 @@ $(function() {
 
   function finish() {
     $finishPanel.removeClass('hidden');
-    $yomi.hide();
-    $mondai.hide();
+    $kana.hide();
+    $theme.hide();
     $correctMessage.text('正解数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
     $mistakeMessage.text('間違い数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
     const end_time = performance.now();
@@ -166,14 +166,14 @@ $(function() {
 
 
   function changeQuestionWord(index) {
-    const word = MONDAI_LIST[index]['text'];
+    const word = THEME[index]['text'];
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="char-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
-    $mondai.html(newHtml);
-    $yomi.text(MONDAI_LIST[index]['yomi']);
+    $theme.html(newHtml);
+    $kana.text(THEME[index]['kana']);
   }
 
 });
