@@ -21,33 +21,51 @@
 
 @import "bootstrap";
 
-
-* {
-
-  box-sizing: border-box;
+header {
+  padding-bottom: 80px;
 }
 
-
-
-
+body {
+  background-color: black;
+  color: white;
+}
 
 #main {
   text-align: center;
 }
 
 #content {
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 10px;
-  width: 400px;
+  width: 800px;
   margin: 0 auto;
+  padding-top: 15px;
+}
+#top {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  padding-top: 15px;
 }
 
 #yomi {
-  top: 40px;
+  padding-top: 40px;
   position: relative;
 }
 
 #mondai {
+  display: flex;
+  justify-content: center;/* 子要素をflexboxにより中央に配置する */
+  font-size: 2.4rem;
+}
+#kana {
+  padding-top: 40px;
+  position: relative;
+}
+
+#theme {
   display: flex;
   justify-content: center;/* 子要素をflexboxにより中央に配置する */
   font-size: 2.4rem;
@@ -58,15 +76,15 @@
 }
 
 .text.default {
-  color: #f3f3f3;
-  text-shadow: 1px 1px 0 #000,
-    -1px 1px 0 #000,
-    1px -1px 0 #000,
-    -1px -1px 0 #000;
+  color: #000;
+  text-shadow: 1px 1px 0 #f3f3f3,
+    -1px 1px 0 #f3f3f3,
+    1px -1px 0 #f3f3f3,
+    -1px -1px 0 #f3f3f3;
 }
 
 .text.correct {
-  color: black;
+  color: white;
   text-shadow: none;
 }
 
@@ -91,4 +109,28 @@
 
 #tool {
   padding-top: 16px;
+}
+
+.in {
+    font-size: 1.25rem;
+    font-weight: 300;
+    padding-top: 150px;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+    color: #333;
+    text-shadow: none;
+}
+
+.title {
+  padding-top: 100px;
+}
+
+.btn-group {
+  width: 50%;
+  
+  
 }
