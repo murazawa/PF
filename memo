@@ -99,51 +99,17 @@ rails g migration AddPlayerNameToPlayer player_name:string
 
 rails g migration Removeカラム名Fromテーブル名 カラム名:型
 
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <div class="container-fluid">
-      <h1><%= link_to root_path, class:"navbar-brand" do %>
-          <%= image_tag 'Nagano Cake.jpg', :size =>'80x80' %>
-          <% end %>
-      </h1>
-      <ul class="navbar-nav justify-content-end">
-          <% if customer_signed_in? %>
-            <li class:"nav-item"><%= link_to 'マイページ', new_customer_session_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to '商品一覧', items_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to 'カート', cart_items_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"nav-link" %></li>
-            <div class="search-form">
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword %>
-                <%= f.submit "Search", class: "btn btn-outline-primary" %>
-              <% end %>
-            </div>
-          <% elsif admin_signed_in? %>
-            <li class:"nav-item"><%= link_to '商品一覧', admin_items_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to '会員一覧', admin_customers_index_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
-            <div class="search-form">
-              <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword %>
-                <%= f.submit "Search", class: "btn btn-outline-primary" %>
-              <% end %>
-            </div>
-          <% else %>
-            <li class:"nav-item"><%= link_to 'About', about_path, class:"nav-link"  %></li>
-            <li class:"nav-item"><%= link_to '商品一覧', items_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to '新規登録', new_customer_registration_path, class:"nav-link" %></li>
-            <li class:"nav-item"><%= link_to 'ログイン', new_customer_session_path, class:"nav-link" %></li>
-            <div class="search-form">
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword %>
-                <%= f.submit "Search", class: "btn btn-outline-primary" %>
-              <% end %>
-            </div>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+
+smtp_settings	:smtpの配信メソッドの詳細設定を行います。
+:address - リモートメールサーバーの利用を許可する。デフォルトは"localhost"であり、必要に応じて変更する。
+:port - メールサーバーが万一ポート25番で動作していない場合はここで変更する。
+:domain - HELOドメインを指定する必要がある場合はここで行なう。
+:user_name - メールサーバーで認証が必要な場合はここでユーザー名を指定する。
+:password - メールサーバーで認証が必要な場合はここでパスワードを指定する。
+:authentication - メールサーバーで認証が必要な場合はここで認証の種類を指定する。:plain（パスワードを平文で送信）、:login（パスワードをBase64でエンコードする）、:cram_md5（チャレンジ/レスポンスによる情報交換と、MD5アルゴリズムによる重要情報のハッシュ化の組み合わせ）のいずれかのシンボルを指定する。
+:enable_starttls_auto - SMTPサーバーでSTARTTLSが有効かどうかを検出して有効にする。デフォルトはtrue。
+:openssl_verify_mode - TLSを利用する場合にOpenSSLが認証をチェックする方法を指定できる。自己署名証明書やワイルドカード証明書でバリデーションを行う必要がある場合に非常に有用。OpenSSL検証定数の名前（'none'、'peer'、'client_once'、'fail_if_no_peer_cert'）を用いることも、この定数を直接用いることもできる（OpenSSL::SSL::VERIFY_NONEやOpenSSL::SSL::VERIFY_PEERなど）
+
+
+グーグル２段階認証の記事
+https://enjoypclife.net/google-account-gmail-2-step-verification/
