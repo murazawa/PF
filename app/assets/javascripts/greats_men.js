@@ -12,7 +12,7 @@ $(function() {
   const $startMessage = $('#start-message');
 
   // 問題用の変数の初期化
-  let char_index = 1;
+  let str2_index = 1;
   let max_length = 5; //　最初の問題
 
   // 問題数
@@ -77,35 +77,35 @@ $(function() {
 
     typing_cnt++; // ①
 
-    const $target = $('#char-'+char_index);
-    const char = $target.text();
-    if (e.key === char) { //入力文字と現在の位置の文字が一緒だったら
+    const $target = $('#str2-'+str2_index);
+    const str2 = $target.text();
+    if (e.key === str2) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
       $target.removeClass('default');
       $target.addClass('correct');
-      char_index++;
+      str2_index++;
       correct_cnt++; //正解したとき②
       } else {
       mistake_cnt++; //間違えたとき③
       }
 
-    if (max_length < char_index) {
+    if (max_length < str2_index) {
       question_number++;
       if (question_limit < question_number) {
         finish();
         return;
       }
       changeQuestionWord(getQuestionNumber());
-      char_index = 1; //初期化
+      str2_index = 1; //初期化
     }
 
   });
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*10);
+    let random_number = Math.floor(Math.random()*19);
     while (done_questions[random_number]!== undefined) {
-      random_number = Math.floor(Math.random()*10);
+      random_number = Math.floor(Math.random()*19);
     }
     done_questions[random_number] = random_number
     return random_number;
@@ -118,7 +118,7 @@ $(function() {
 // ③最初の問題の表示する
 // ④終了メッセージを非表示に、問題エリアを表示する
   function init(){
-    char_index = 1;
+    str2_index = 1;
     question_number = 1;
     question_limit = 5;
     done_question = {};
@@ -157,10 +157,16 @@ $(function() {
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {
-      newHtml += '<p id="char-'+(i+1)+'" class="text default">'+word[i]+'</p>';
+      newHtml += '<p id="str2-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
     $mondai.html(newHtml);
     $yomi.text(MONDAI_LIST[index]['yomi']);
   }
 
 });
+
+// JavaScriptの文字列は引用符で囲む必要があります。
+
+// let str = "Hello";
+// let str2 = 'Single quotes are ok too';
+// let phrase = `can embed ${str}`;

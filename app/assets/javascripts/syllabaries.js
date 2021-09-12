@@ -12,7 +12,7 @@ $(function() {
   const $startMessage = $('#start-message');
 
   // 問題用の変数の初期化
-  let char_index = 1;
+  let str_index = 1;
   let max_length = 5; //　最初の問題
 
   // 問題数
@@ -77,26 +77,26 @@ $(function() {
 
     typing_cnt++; // ①
 
-    const $target = $('#char-'+char_index);
-    const char = $target.text();
-    if (e.key === char) { //入力文字と現在の位置の文字が一緒だったら
+    const $target = $('#str-'+str_index);
+    const str = $target.text();
+    if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
       $target.removeClass('default');
       $target.addClass('correct');
-      char_index++;
+      str_index++;
       correct_cnt++; //正解したとき②
       } else {
       mistake_cnt++; //間違えたとき③
       }
 
-    if (max_length < char_index) {
+    if (max_length < str_index) {
       question_number++;
       if (question_limit < question_number) {
         finish();
         return;
       }
       changeQuestionWord(getQuestionNumber());
-      char_index = 1; //初期化
+      str_index = 1; //初期化
     }
 
   });
@@ -118,7 +118,7 @@ $(function() {
 // ③最初の問題の表示する
 // ④終了メッセージを非表示に、問題エリアを表示する
   function init(){
-    char_index = 1;
+    str_index = 1;
     question_number = 1;
     question_limit = 9;
     done_question = {};
@@ -157,7 +157,7 @@ $(function() {
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {
-      newHtml += '<p id="char-'+(i+1)+'" class="text default">'+word[i]+'</p>';
+      newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
     $mondai.html(newHtml);
     $yomi.text(MONDAI_LIST[index]['yomi']);
