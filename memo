@@ -113,3 +113,34 @@ smtp_settings	:smtpの配信メソッドの詳細設定を行います。
 
 グーグル２段階認証の記事
 https://enjoypclife.net/google-account-gmail-2-step-verification/
+
+
+
+<style>
+div {
+  opacity: 0;
+  transition: .7s;
+}
+div.show {
+  opacity: 1;
+}
+</style>
+ 
+<button>表示させる</button>
+<div class="show">
+  <p>ようこそ！</p>
+  <p>今回はフェードアウトのご紹介！</p>
+  <p>CSSでも簡単に実装できます。</p>
+</div>
+
+
+$(function() {
+ 
+  // ボタンをクリックしたら発動
+  $('button').click(function() {
+ 
+    // class'show'を削除
+    $('div').removeClass('show');
+ 
+  });
+});

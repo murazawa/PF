@@ -62,7 +62,7 @@ $(function() {
 
 // ゲームを開始したら、最初のメッセージとSelectは隠し、問題を表示
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
-  $(document).on('keypress', function(e){
+  $(document).off.on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
     $startMessage.hide();
     $countSelect.hide();

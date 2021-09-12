@@ -75,7 +75,14 @@ $(function() {
 
 // ゲームを開始したら、最初のメッセージとSelectは隠し、問題を表示
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
-  $(document).on('keypress', function(e){
+
+// .off追加
+// キーボード入力を行うと、 keypressイベントが２回発生してしまっていた
+// console.logを使って、怪しいところの条件分岐の値を確認する
+// その原因は、「最初のキーボード入力」と「イベント内で追加されたクラス名」で２回発生したから
+// 解決策として、最初のイベント発生時に.off() を使うことで最初のイベントハンドラーを削除した
+
+  $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
     $startMessage.hide();
     $countSelect.hide();
