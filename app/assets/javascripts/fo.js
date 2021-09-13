@@ -1,3 +1,4 @@
+
 $(function() {
   // オブジェクトを変数に代入
   const $kana = $('#kana');
@@ -52,7 +53,6 @@ $(function() {
     {kana:'ヤンクック', text:'yankukku'}, {kana:'ヨーグルト', text:'yo-guruto'},
     {kana:'ランニング', text:'rannningu'}, {kana:'立候補', text:'rikkouho'},
     {kana:'ワイシャツ', text:'waisyatu'}, {kana:'露天風呂', text:'rotenburo'},
-    {kana:'ふきのとう', text:'hukinotou'}, {kana:'さつまいも', text:'satumaimo'},
 
   ];
   // 最初は問題を隠すhide()
@@ -75,7 +75,14 @@ $(function() {
 
 // ゲームを開始したら、最初のメッセージとSelectは隠し、問題を表示
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
-  $(document).off.on('keypress', function(e){
+
+// .off追加
+// キーボード入力を行うと、 keypressイベントが２回発生してしまっていた
+// console.logを使って、怪しいところの条件分岐の値を確認する
+// その原因は、「最初のキーボード入力」と「イベント内で追加されたクラス名」で２回発生したから
+// 解決策として、最初のイベント発生時に.off() を使うことで最初のイベントハンドラーを削除した
+
+  $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
     $startMessage.hide();
     $countSelect.hide();
@@ -116,9 +123,9 @@ $(function() {
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*47);
+    let random_number = Math.floor(Math.random()*45);
     while (done_questions[random_number]!== undefined) {
-      random_number = Math.floor(Math.random()*47);
+      random_number = Math.floor(Math.random()*45);
     }
     done_questions[random_number] = random_number
     return random_number;
@@ -170,7 +177,6 @@ $(function() {
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {
-      
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
     $theme.html(newHtml);

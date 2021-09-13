@@ -75,6 +75,7 @@ $(function() {
     return;
   }
 
+
     typing_cnt++; // ①
 
     const $target = $('#str-'+str_index);

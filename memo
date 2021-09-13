@@ -125,7 +125,7 @@ div.show {
   opacity: 1;
 }
 </style>
- 
+
 <button>表示させる</button>
 <div class="show">
   <p>ようこそ！</p>
@@ -135,12 +135,24 @@ div.show {
 
 
 $(function() {
- 
+
   // ボタンをクリックしたら発動
   $('button').click(function() {
- 
+
     // class'show'を削除
     $('div').removeClass('show');
- 
+
   });
 });
+
+$(":button").click(function(){
+  $("div").toggle("slow");
+});
+
+keypress
+
+rake assets:precompile
+
+<%= javascript_include_tag '' %>
+
+Rails.application.config.assets.precompile << ''
