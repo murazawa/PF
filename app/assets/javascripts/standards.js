@@ -52,7 +52,7 @@ $(function() {
     {kana:'明太子', text:'mentaiko'}, {kana:'モルモット', text:'morumotto'},
     {kana:'ヤンクック', text:'yankukku'}, {kana:'ヨーグルト', text:'yo-guruto'},
     {kana:'ランニング', text:'rannningu'}, {kana:'立候補', text:'rikkouho'},
-    {kana:'ワイシャツ', text:'waisyatu'}, {kana:'露天風呂', text:'rotenburo'},
+    {kana:'ワイシャツ', text:'waisyatu'}, {kana:'露天風呂', text:'rotenburo         
 
   ];
   // 最初は問題を隠すhide()
