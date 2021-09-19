@@ -3,6 +3,8 @@ class GamesController < ApplicationController
   end
 
   def syllabaries
+    # @score = params[:score]
+  # 変数名 = params[:キー]の形で記述
   end
 
   def greats_men

@@ -1,19 +1,17 @@
   <%= javascript_include_tag 'greats_men.js' %>
+
     <div><h2>偉人の名言を打て</h2></div>
     <div id="content">
       <p id="start-message">「スペースキー」を押すとスタートします</p>
-      <p id="yomi">よみ</p>
+      <p id="yomi">よみ</p> <!-- yomi=>kana -->
       <div id="mondai">
-        <p id="char-1" class="text default">a</p>
-        <p id="char-2" class="text default">b</p>
-        <p id="char-3" class="text default">c</p>
       </div>
       <div id="finish-panel" class="hidden">
         <p>終了しました</p>
         <p id="correct-message"></p>
         <p id="mistake-message"></p>
         <p id="time-message"></p>
-        <button id="start-button">やりなおす</button>
+        <button class="restart"><%= link_to "もう一度遊ぶ", games_greats_men_path %></button>
       </div>
     </div>
 

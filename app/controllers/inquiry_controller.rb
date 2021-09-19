@@ -1,10 +1,10 @@
 class InquiryController < ApplicationController
   def index
-    
+
     # お問い合わせ画面表示
     @inquiry = Inquiry.new
     render :action => 'index'
-    
+
   end
 
   def confirm
@@ -23,9 +23,9 @@ class InquiryController < ApplicationController
     # メール送信
     @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     InquiryMailer.received_email(@inquiry).deliver
-    
+
     # 完了画面の表示
     render :action => 'thanks'
-    
+
   end
 end

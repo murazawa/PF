@@ -1,3 +1,4 @@
+<div id="top">
 <h2>会員登録</h2>
 <%= form_with model: @player, url: registration_path(resource_name) do |f| %>
 <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -27,9 +28,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "会員登録", class:"btn col-6 btn-lg mt-4 btn-secondary border-white bg-white" %>
+    <%= f.submit "会員登録", class:"btn btn-lg mt-4 btn-secondary border-white bg-white" %>
   </div>
 <% end %>
 
 <%= render "players/shared/links" %>
 
+</div>

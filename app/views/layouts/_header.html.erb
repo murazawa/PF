@@ -8,10 +8,12 @@
           <li class:"nav-item"><%= link_to "マイページ", player_path(current_player), class:"nav-link" %></li>
           <%#= link_to "お題グループ一覧", theme_groups_path %>
           <li class:"nav-item"><%= link_to 'ログアウト', destroy_player_session_path, method: :delete, class:"nav-link" %></li>
+          <li class:"nav-item"><%= link_to "お問い合わせ", inquiry_path, class:"nav-link" %></li>
         <% else %>
           <li class:"nav-item"><%= link_to "モード一覧", games_path, class:"nav-link" %></li>
           <li class:"nav-item"><%= link_to "新規登録", new_player_registration_path, class:"nav-link" %></li>
           <li class:"nav-item"><%= link_to "ログイン", new_player_session_path, class:"nav-link" %></li>
+          <li class:"nav-item"><%= link_to "お問い合わせ", inquiry_path, class:"nav-link" %></li>
         <% end %>
       </ul>
     </div>

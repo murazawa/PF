@@ -1,8 +1,9 @@
+<div id="top">
 <%= form_with model: @inquiry, url: inquiry_confirm_path, local: true do |f| %>
   <div class="page-header">
     <h1>お問い合わせ</h1>
   </div>
-  
+
   <% if @inquiry.errors.any? %>
     <div class="alert alert-denger" role="alert">
       <strong>入力内容にエラーがあります</strong>
@@ -13,20 +14,19 @@
       </ul>
     </div>
   <% end %>
-  
-  <table class="table">
-    <tr>
-      <th>名前<span class="text-denger">（必須）</span></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th>お問い合わせ内容</th>
-      <td><%= f.text_area :message %></td>
-    </tr>
-  </table>
-  <%= f.submit '確認', class: 'btn btn-primary' %>
+
+
+      <p class="inquiry">名前<span class="text-denger">（必須）</span></p>
+      <%= f.text_field :name %>
+
+
+      <p class="inquiry">メールアドレス<span class="text-danger">（必須）</span></p>
+      <%= f.text_field :email %>
+
+
+      <p class="inquiry">お問い合わせ内容</p>
+      <%= f.text_area :message %>
+
+  <p><%= f.submit '確認', class: 'btn btn-primary' %></p>
 <% end %>
+</div>

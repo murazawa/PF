@@ -16,4 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile << 'syllabaries.js'
 Rails.application.config.assets.precompile << 'greats_men.js'
 Rails.application.config.assets.precompile << 'standards.js'
-Rails.application.config.assets.precompile << 'creates.js'
+Rails.application.config.assets.precompile << 'fo.js'
