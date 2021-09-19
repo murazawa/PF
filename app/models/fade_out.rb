@@ -1,0 +1,2 @@
+class FadeOut < ApplicationRecord
+end

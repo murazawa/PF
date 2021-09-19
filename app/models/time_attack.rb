@@ -1,0 +1,2 @@
+class TimeAttack < ApplicationRecord
+end

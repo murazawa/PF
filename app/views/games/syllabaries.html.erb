@@ -1,0 +1,23 @@
+  <%= javascript_include_tag 'syllabaries.js' %>
+    <div><h2>50音早打ち</h2></div>
+    <div id="content">
+      <p id="start-message">「スペースキー」を押すとスタートします</p>
+      <p id="yomi">よみ</p>
+      <div id="mondai">
+      </div>
+      <div id="finish-panel" class="hidden">
+        <p>終了しました</p>
+        <p id="correct-message"></p>
+        <p id="mistake-message"></p>
+        <p id="time-message"></p>
+        <button class="restart"><%= link_to "もう一度遊ぶ", games_syllabaries_path %></button>
+      </div>
+    </div>
+
+    <div id="tool">
+      <select id="count-select">
+        <option value="9">出題数：9問</option>
+      </select>
+    </div>
+
+    <%#= @score %>

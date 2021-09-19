@@ -1,0 +1,20 @@
+<h1>お題を編集</h1>
+<%= form_with model: @word, url: theme_group_theme_word_path, method: :PATCH, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :読みを編集する %>
+    <%#= f.text_field :read_word, :theme_word_id, autofocus: true %>
+    <%#= f.hidden_field :theme_word_id, :value => @read_word, autofocus: true %>
+    <%= f.text_field :read_word, :value => @read_word, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :入力を編集する %>
+    <%#= f.text_field :type_word, :theme_word_id, autofocus: true %>
+    <%#= f.hidden_field :theme_word_id, :value => @type_word, autofocus: true %>
+    <%= f.text_field :type_word, :value => @type_word, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存する" %>
+  </div>
+<% end %>
