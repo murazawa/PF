@@ -84,6 +84,8 @@ $(function() {
 
   $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
+    console.log("test")
+    console.log(this)
     $startMessage.hide();
     $countSelect.hide();
     $kana.show();
@@ -102,6 +104,7 @@ $(function() {
     if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
       $target.removeClass('default');
+
       $target.addClass('correct');
       str_index++;
       correct_cnt++; //正解したとき②
@@ -118,6 +121,8 @@ $(function() {
       changeQuestionWord(getQuestionNumber());
       str_index = 1; //初期化
     }
+
+
 
   });
 
@@ -183,4 +188,22 @@ $(function() {
     $kana.text(THEME[index]['kana']);
   }
 
+
+
+});
+
+
+$(function() {
+
+  // ボタンをクリックしたら発動
+  $(window).keydown(function(e){
+  // $('.text').keypress(function() {
+    console.log("test")
+    // class'show'を削除
+    // $('div').removeClass('#theme');
+        $('#theme').fadeOut();
+
+    console.log("test")
+    console.log(this)
+  });
 });

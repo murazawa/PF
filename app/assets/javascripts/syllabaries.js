@@ -149,7 +149,7 @@ $(function() {
   function finish() {
   var gamescore = localStorage.getItem('score');
   localStorage.clear();
-    
+
     $finishPanel.removeClass('hidden');
     $yomi.hide();
     $mondai.hide();
@@ -158,9 +158,9 @@ $(function() {
     const end_time = performance.now();
     const typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     $timeMessage.text('かかった時間：'+typing_time+'秒');
-    
+
   // $.ajax({
-  //   url: '/games/syllabaries',  
+  //   url: '/games/syllabaries',
   //   type: 'GET',
   //   dataType: 'html',
   //   async: true,
@@ -168,7 +168,7 @@ $(function() {
   //     score: gamescore,
   //   },
   // });
-    
+
 }
 
 
