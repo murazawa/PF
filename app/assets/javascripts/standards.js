@@ -1,15 +1,15 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  const $kana = $('#kana');
-  const $theme = $('#theme');
-  const $finishPanel = $('#finish-panel');
-  const $countSelect = $('#count-select');
-  const $correctMessage = $('#correct-message');
-  const $mistakeMessage = $('#mistake-message');
+  let $kana = $('#kana');
+  let $theme = $('#theme');
+  let $finishPanel = $('#finish-panel');
+  let $countSelect = $('#count-select');
+  let $correctMessage = $('#correct-message');
+  let $mistakeMessage = $('#mistake-message');
 
-  const $timeMessage = $('#time-message');
-  const $startMessage = $('#start-message');
+  let $timeMessage = $('#time-message');
+  let $startMessage = $('#start-message');
 
   // 問題用の変数の初期化
   let str_index = 1;
@@ -29,7 +29,7 @@ $(function() {
   let start_time = 0;
 
   // 問題
-  const THEME = [
+  let THEME = [
     {kana:'アーモンド', text:'a-mondo'}, {kana:'赤とんぼ', text:'akatonbo'},
     {kana:'天の川', text:'amanogawa'}, {kana:'アンケート', text:'anke-to'},
     {kana:'腕時計', text:'udedokei'}, {kana:'浮き袋', text:'ukibukuro'},
@@ -90,8 +90,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    const $target = $('#str-'+str_index);
-    const str = $target.text();
+    let $target = $('#str-'+str_index);
+    let str = $target.text();
     // console.log("str")
     // console.log(str)
     // console.log("e.key")
@@ -167,14 +167,14 @@ $(function() {
     $theme.hide();
     $correctMessage.text('正解数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
     $mistakeMessage.text('間違い数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
-    const end_time = performance.now();
-    const typing_time = ( (end_time - start_time) / 1000).toFixed(2);
+    let end_time = performance.now();
+    let typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     $timeMessage.text('かかった時間：'+typing_time+'秒');
 }
 
 
   function changeQuestionWord(index) {
-    const word = THEME[index]['text'];
+    let word = THEME[index]['text'];
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {

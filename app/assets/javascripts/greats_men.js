@@ -1,15 +1,15 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  const $yomi = $('#yomi');
-  const $mondai = $('#mondai');
-  const $finishPanel = $('#finish-panel');
-  const $countSelect = $('#count-select');
-  const $correctMessage = $('#correct-message');
-  const $mistakeMessage = $('#mistake-message');
+  let $yomi = $('#yomi');
+  let $mondai = $('#mondai');
+  let $finishPanel = $('#finish-panel');
+  let $countSelect = $('#count-select');
+  let $correctMessage = $('#correct-message');
+  let $mistakeMessage = $('#mistake-message');
 
-  const $timeMessage = $('#time-message');
-  const $startMessage = $('#start-message');
+  let $timeMessage = $('#time-message');
+  let $startMessage = $('#start-message');
 
   // 問題用の変数の初期化
   let str_index = 1;
@@ -29,7 +29,7 @@ $(function() {
   let start_time = 0;
 
   // 問題
-  const MONDAI_LIST = [
+  let MONDAI_LIST = [
     {yomi:'夢はでっかく根は深く', text:'yumehadekkakunehahukaku'}, {yomi:'心に欲なき時は義理を行う', text:'kokoroniyokunakitokihagiriwookonau'},
     {yomi:'夢なき者に成功なし', text:'yumenakimononiseikouhanasi'}, {yomi:'敵は多ければ多いほど面白い', text:'tekihaookerebaooihodoomosiroi'},
     {yomi:'絶対は絶対にない', text:'zettaihazettaininai'}, {yomi:'困難の中に、機会がある', text:'konnnannnonakani,kikaigaaru'},
@@ -77,8 +77,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    const $target = $('#str-'+str_index);
-    const str = $target.text();
+    let $target = $('#str-'+str_index);
+    let str = $target.text();
     // console.log("str")
     // console.log(str)
     // console.log("e.key")
@@ -151,14 +151,14 @@ $(function() {
     $mondai.hide();
     $correctMessage.text('正解数/タイプ数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
     $mistakeMessage.text('間違い数/タイプ数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
-    const end_time = performance.now();
-    const typing_time = ( (end_time - start_time) / 1000).toFixed(2);
+    let end_time = performance.now();
+    let typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     $timeMessage.text('かかった時間：'+typing_time+'秒');
 }
 
 
   function changeQuestionWord(index) {
-    const word = MONDAI_LIST[index]['text'];
+    let word = MONDAI_LIST[index]['text'];
     max_length = word.length;
     let newHtml = '';
     for (var i = 0; i < max_length; i++) {
