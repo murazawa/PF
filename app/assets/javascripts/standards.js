@@ -1,15 +1,15 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  var kana = ('#kana');
-  var theme = ('#theme');
-  var finishPanel = ('#finish-panel');
-  var countSelect = ('#count-select');
-  var correctMessage = ('#correct-message');
-  var mistakeMessage = ('#mistake-message');
+  var kana = $('#kana');
+  var theme = $('#theme');
+  var finishPanel = $('#finish-panel');
+  var countSelect = $('#count-select');
+  var correctMessage = $('#correct-message');
+  var mistakeMessage = $('#mistake-message');
 
-  var timeMessage = ('#time-message');
-  var startMessage = ('#start-message');
+  var timeMessage = $('#time-message');
+  var startMessage = $('#start-message');
 
   // 問題用の変数の初期化
   var str_index = 1;
@@ -56,12 +56,12 @@ $(function() {
 
   ];
   // 最初は問題を隠すhide()
-  $kana.hide();
-  $theme.hide();
+  kana.hide();
+  theme.hide();
   changeQuestionWord(getQuestionNumber());　//最初の問題の設定
 
-  $countSelect.on('change', function(e) {
-  question_limit = Number($countSelect.val());
+  countSelect.on('change', function(e) {
+  question_limit = Number(countSelect.val());
   done_questions = {}; // ここ大事
   changeQuestionWord(getQuestionNumber());
   });
@@ -77,10 +77,10 @@ $(function() {
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
   $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
-    $startMessage.hide();
-    $countSelect.hide();
-    $kana.show();
-    $theme.show();
+    startMessage.hide();
+    countSelect.hide();
+    kana.show();
+    theme.show();
     start_game = true;
     start_time = performance.now();
     return;
@@ -90,8 +90,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    var $target = $('#str-'+str_index);
-    var str = $target.text();
+    var target = $('#str-'+str_index);
+    var str = target.text();
     // console.log("str")
     // console.log(str)
     // console.log("e.key")
@@ -102,8 +102,8 @@ $(function() {
 
     if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
-      $target.removeClass('default');
-      $target.addClass('correct');
+      target.removeClass('default');
+      target.addClass('correct');
       str_index++;
       correct_cnt++; //正解したとき②
       } else {
@@ -149,27 +149,27 @@ $(function() {
     start_game = false;
     start_time = 0;
 
-    $countSelect.val('5');
+    countSelect.val('5');
 
     changeQuestionWord(getQuestionNumber());
-    $finishPanel.addClass('hidden');
-    $kana.hide();
-    $theme.hide();
-    $startMessage.show();
-    $countSelect.show();
+    finishPanel.addClass('hidden');
+    kana.hide();
+    theme.hide();
+    startMessage.show();
+    countSelect.show();
   }
 
 
 
   function finish() {
-    $finishPanel.removeClass('hidden');
-    $kana.hide();
-    $theme.hide();
-    $correctMessage.text('正解数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
-    $mistakeMessage.text('間違い数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
+    finishPanel.removeClass('hidden');
+    kana.hide();
+    theme.hide();
+    correctMessage.text('正解数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
+    mistakeMessage.text('間違い数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
     var end_time = performance.now();
     var typing_time = ( (end_time - start_time) / 1000).toFixed(2);
-    $timeMessage.text('かかった時間：'+typing_time+'秒');
+    timeMessage.text('かかった時間：'+typing_time+'秒');
 }
 
 
@@ -180,8 +180,8 @@ $(function() {
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
-    $theme.html(newHtml);
-    $kana.text(THEME[index]['kana']);
+    theme.html(newHtml);
+    kana.text(THEME[index]['kana']);
   }
 
 });

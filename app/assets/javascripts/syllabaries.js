@@ -1,15 +1,15 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  var yomi = ('#yomi');
-  var mondai = ('#mondai');
-  var finishPanel = ('#finish-panel');
-  var countSelect = ('#count-select');
-  var correctMessage = ('#correct-message');
-  var mistakeMessage = ('#mistake-message');
+  var yomi = $('#yomi');
+  var mondai = $('#mondai');
+  var finishPanel = $('#finish-panel');
+  var countSelect = $('#count-select');
+  var correctMessage = $('#correct-message');
+  var mistakeMessage = $('#mistake-message');
 
-  var timeMessage = ('#time-message');
-  var startMessage = ('#start-message');
+  var timeMessage = $('#time-message');
+  var startMessage = $('#start-message');
 
   // 問題用の変数の初期化
   var str_index = 1;
@@ -27,7 +27,7 @@ $(function() {
 
   var start_game = false;
   var start_time = 0;
-  console.log($yomi)
+  // console.log($yomi)
 
   // 問題
   var MONDAI_LIST = [
@@ -44,12 +44,12 @@ $(function() {
   ];
 
   // 最初は問題を隠すhide()
-  $yomi.hide();
-  $mondai.hide();
+  yomi.hide();
+  mondai.hide();
   changeQuestionWord(getQuestionNumber());　//最初の問題の設定
 
-  $countSelect.on('change', function(e) {
-  question_limit = Number($countSelect.val());
+  countSelect.on('change', function(e) {
+  question_limit = Number(countSelect.val());
   done_questions = {}; // ここ大事
   changeQuestionWord(getQuestionNumber());
   });
@@ -65,10 +65,10 @@ $(function() {
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
   $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
-    $startMessage.hide();
-    $countSelect.hide();
-    $yomi.show();
-    $mondai.show();
+    startMessage.hide();
+    countSelect.hide();
+    yomi.show();
+    mondai.show();
     start_game = true;
     start_time = performance.now();
     return;
@@ -79,8 +79,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    var $target = $('#str-'+str_index);
-    var str = $target.text();
+    var target = $('#str-'+str_index);
+    var str = target.text();
     // console.log("str")
     // console.log(str)
     // console.log("e.key")
@@ -88,8 +88,8 @@ $(function() {
 
     if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
-      $target.removeClass('default');
-      $target.addClass('correct');
+      target.removeClass('default');
+      target.addClass('correct');
       str_index++;
       correct_cnt++; //正解したとき②
       } else {
@@ -135,14 +135,14 @@ $(function() {
     start_game = false;
     start_time = 0;
 
-    $countSelect.val('9');
+    countSelect.val('9');
 
     changeQuestionWord(getQuestionNumber());
-    $finishPanel.addClass('hidden');
-    $yomi.hide();
-    $mondai.hide();
-    $startMessage.show();
-    $countSelect.show();
+    finishPanel.addClass('hidden');
+    yomi.hide();
+    mondai.hide();
+    startMessage.show();
+    countSelect.show();
   }
 
 
@@ -151,16 +151,16 @@ $(function() {
   var gamescore = localStorage.getItem('score');
   localStorage.clear();
 
-    $finishPanel.removeClass('hidden');
-    $yomi.hide();
-    $mondai.hide();
-    $correctMessage.text('正解数/タイプ数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
-    $mistakeMessage.text('間違い数/タイプ数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
+    finishPanel.removeClass('hidden');
+    yomi.hide();
+    mondai.hide();
+    correctMessage.text('正解数/タイプ数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
+    mistakeMessage.text('間違い数/タイプ数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
     var end_time = performance.now();
     var typing_time = ( (end_time - start_time) / 1000).toFixed(2);
-    $timeMessage.text('かかった時間：'+typing_time+'秒');
+    timeMessage.text('かかった時間：'+typing_time+'秒');
 
-  // $.ajax({
+  // .ajax({
   //   url: '/games/syllabaries',
   //   type: 'GET',
   //   dataType: 'html',
@@ -180,8 +180,8 @@ $(function() {
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
-    $mondai.html(newHtml);
-    $yomi.text(MONDAI_LIST[index]['yomi']);
+    mondai.html(newHtml);
+    yomi.text(MONDAI_LIST[index]['yomi']);
   }
 
 });
