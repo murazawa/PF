@@ -1,35 +1,35 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  let kana = ('#kana');
-  let theme = ('#theme');
-  let finishPanel = ('#finish-panel');
-  let countSelect = ('#count-select');
-  let correctMessage = ('#correct-message');
-  let mistakeMessage = ('#mistake-message');
+  var kana = ('#kana');
+  var theme = ('#theme');
+  var finishPanel = ('#finish-panel');
+  var countSelect = ('#count-select');
+  var correctMessage = ('#correct-message');
+  var mistakeMessage = ('#mistake-message');
 
-  let timeMessage = ('#time-message');
-  let startMessage = ('#start-message');
+  var timeMessage = ('#time-message');
+  var startMessage = ('#start-message');
 
   // 問題用の変数の初期化
-  let str_index = 1;
-  let max_length = 5; //　最初の問題
+  var str_index = 1;
+  var max_length = 5; //　最初の問題
 
   // 問題数
-  let question_number = 1;
-  let question_limit = 5;
-  let done_questions = {};
+  var question_number = 1;
+  var question_limit = 5;
+  var done_questions = {};
 
   // カウントする変数を３つ宣言
-  let typing_cnt = 0; //タイプした合計
-  let correct_cnt = 0; //正解タイプ数
-  let mistake_cnt = 0; //間違えたタイプ数
+  var typing_cnt = 0; //タイプした合計
+  var correct_cnt = 0; //正解タイプ数
+  var mistake_cnt = 0; //間違えたタイプ数
 
-  let start_game = false;
-  let start_time = 0;
+  var start_game = false;
+  var start_time = 0;
 
   // 問題
-  let THEME = [
+  var THEME = [
     {kana:'アーモンド', text:'a-mondo'}, {kana:'赤とんぼ', text:'akatonbo'},
     {kana:'天の川', text:'amanogawa'}, {kana:'アンケート', text:'anke-to'},
     {kana:'腕時計', text:'udedokei'}, {kana:'浮き袋', text:'ukibukuro'},
@@ -99,8 +99,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    let $target = $('#str-'+str_index);
-    let str = $target.text();
+    var $target = $('#str-'+str_index);
+    var str = $target.text();
     if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
       $target.removeClass('default');
@@ -128,7 +128,7 @@ $(function() {
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*45);
+    var random_number = Math.floor(Math.random()*45);
     while (done_questions[random_number]!== undefined) {
       random_number = Math.floor(Math.random()*45);
     }
@@ -171,16 +171,16 @@ $(function() {
     $theme.hide();
     $correctMessage.text('正解数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
     $mistakeMessage.text('間違い数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
-    let end_time = performance.now();
-    let typing_time = ( (end_time - start_time) / 1000).toFixed(2);
+    var end_time = performance.now();
+    var typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     $timeMessage.text('かかった時間：'+typing_time+'秒');
 }
 
 
   function changeQuestionWord(index) {
-    let word = THEME[index]['text'];
+    var word = THEME[index]['text'];
     max_length = word.length;
-    let newHtml = '';
+    var newHtml = '';
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }

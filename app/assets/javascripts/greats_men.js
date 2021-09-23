@@ -1,35 +1,35 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  let yomi = ('#yomi');
-  let mondai = ('#mondai');
-  let finishPanel = ('#finish-panel');
-  let countSelect = ('#count-select');
-  let correctMessage = ('#correct-message');
-  let mistakeMessage = ('#mistake-message');
+  var yomi = ('#yomi');
+  var mondai = ('#mondai');
+  var finishPanel = ('#finish-panel');
+  var countSelect = ('#count-select');
+  var correctMessage = ('#correct-message');
+  var mistakeMessage = ('#mistake-message');
 
-  let timeMessage = ('#time-message');
-  let startMessage = ('#start-message');
+  var timeMessage = ('#time-message');
+  var startMessage = ('#start-message');
 
   // 問題用の変数の初期化
-  let str_index = 1;
-  let max_length = 5; //　最初の問題
+  var str_index = 1;
+  var max_length = 5; //　最初の問題
 
   // 問題数
-  let question_number = 1;
-  let question_limit = 5;
-  let done_questions = {};
+  var question_number = 1;
+  var question_limit = 5;
+  var done_questions = {};
 
   // カウントする変数を３つ宣言
-  let typing_cnt = 0; //タイプした合計
-  let correct_cnt = 0; //正解タイプ数
-  let mistake_cnt = 0; //間違えたタイプ数
+  var typing_cnt = 0; //タイプした合計
+  var correct_cnt = 0; //正解タイプ数
+  var mistake_cnt = 0; //間違えたタイプ数
 
-  let start_game = false;
-  let start_time = 0;
+  var start_game = false;
+  var start_time = 0;
 
   // 問題
-  let MONDAI_LIST = [
+  var MONDAI_LIST = [
     {yomi:'夢はでっかく根は深く', text:'yumehadekkakunehahukaku'}, {yomi:'心に欲なき時は義理を行う', text:'kokoroniyokunakitokihagiriwookonau'},
     {yomi:'夢なき者に成功なし', text:'yumenakimononiseikouhanasi'}, {yomi:'敵は多ければ多いほど面白い', text:'tekihaookerebaooihodoomosiroi'},
     {yomi:'絶対は絶対にない', text:'zettaihazettaininai'}, {yomi:'困難の中に、機会がある', text:'konnnannnonakani,kikaigaaru'},
@@ -77,8 +77,8 @@ $(function() {
 
     typing_cnt++; // ①
 
-    let $target = $('#str-'+str_index);
-    let str = $target.text();
+    var $target = $('#str-'+str_index);
+    var str = $target.text();
     // console.log("str")
     // console.log(str)
     // console.log("e.key")
@@ -108,7 +108,7 @@ $(function() {
 
 
   function getQuestionNumber(){
-    let random_number = Math.floor(Math.random()*19);
+    var random_number = Math.floor(Math.random()*19);
     while (done_questions[random_number]!== undefined) {
       random_number = Math.floor(Math.random()*19);
     }
@@ -151,16 +151,16 @@ $(function() {
     $mondai.hide();
     $correctMessage.text('正解数/タイプ数：' +correct_cnt+'/' +typing_cnt+' ('+ Math.floor(correct_cnt/typing_cnt * 100)+'%)');
     $mistakeMessage.text('間違い数/タイプ数：'+mistake_cnt+'/'+typing_cnt+' ('+ Math.floor(mistake_cnt/typing_cnt * 100)+'%)');
-    let end_time = performance.now();
-    let typing_time = ( (end_time - start_time) / 1000).toFixed(2);
+    var end_time = performance.now();
+    var typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     $timeMessage.text('かかった時間：'+typing_time+'秒');
 }
 
 
   function changeQuestionWord(index) {
-    let word = MONDAI_LIST[index]['text'];
+    var word = MONDAI_LIST[index]['text'];
     max_length = word.length;
-    let newHtml = '';
+    var newHtml = '';
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
@@ -173,6 +173,6 @@ $(function() {
 
 // JavaScriptの文字列は引用符で囲む必要があります。
 
-// let str = "Hello";
-// let str2 = 'Single quotes are ok too';
-// let phrase = `can embed ${str}`;
+// var str = "Hello";
+// var str2 = 'Single quotes are ok too';
+// var phrase = `can embed ${str}`;
