@@ -1,15 +1,15 @@
 
 $(function() {
   // オブジェクトを変数に代入
-  let $kana = $('#kana');
-  let $theme = $('#theme');
-  let $finishPanel = $('#finish-panel');
-  let $countSelect = $('#count-select');
-  let $correctMessage = $('#correct-message');
-  let $mistakeMessage = $('#mistake-message');
+  let kana = ('#kana');
+  let theme = ('#theme');
+  let finishPanel = ('#finish-panel');
+  let countSelect = ('#count-select');
+  let correctMessage = ('#correct-message');
+  let mistakeMessage = ('#mistake-message');
 
-  let $timeMessage = $('#time-message');
-  let $startMessage = $('#start-message');
+  let timeMessage = ('#time-message');
+  let startMessage = ('#start-message');
 
   // 問題用の変数の初期化
   let str_index = 1;
