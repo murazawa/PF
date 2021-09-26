@@ -68,24 +68,15 @@ $(function() {
 
 
   // #start-buttonで　init();関数の呼び出し
-  ('#start-button').on('click', function(e){
+  $('#start-button').on('click', function(e){
     init();
   });
 
 
 // ゲームを開始したら、最初のメッセージとSelectは隠し、問題を表示
 // キーをタイプした時にそれぞれの数を増加 → 1, 2, 3
-
-// .off追加
-// キーボード入力を行うと、 keypressイベントが２回発生してしまっていた
-// console.logを使って、怪しいところの条件分岐の値を確認する
-// その原因は、「最初のキーボード入力」と「イベント内で追加されたクラス名」で２回発生したから
-// 解決策として、最初のイベント発生時に.off() を使うことで最初のイベントハンドラーを削除した
-
   $(document).off().on('keypress', function(e){
     if (!start_game && e.keyCode === 32) { //  スペースでスタート
-    console.log("test")
-    console.log(this)
     startMessage.hide();
     countSelect.hide();
     kana.show();
@@ -99,12 +90,19 @@ $(function() {
 
     typing_cnt++; // ①
 
-    var target = ('#str-'+str_index);
+    var target = $('#str-'+str_index);
     var str = target.text();
+    // console.log("str")
+    // console.log(str)
+    // console.log("e.key")
+    // console.log(e.key)
+
+
+
+
     if (e.key === str) { //入力文字と現在の位置の文字が一緒だったら
       // alert('正解!');
       target.removeClass('default');
-
       target.addClass('correct');
       str_index++;
       correct_cnt++; //正解したとき②
@@ -120,11 +118,21 @@ $(function() {
       }
       changeQuestionWord(getQuestionNumber());
       str_index = 1; //初期化
+      theme.show();
     }
 
-
-
+      // ボタンをクリックしたら発動
+    // $(window).keydown(function(e){
+    //       $('#theme').fadeOut();
+    //   });
   });
+        $(window).keydown(function(e){
+          // theme.show();
+          $('#theme').fadeOut();
+
+      });
+
+
 
 
   function getQuestionNumber(){
@@ -135,6 +143,8 @@ $(function() {
     done_questions[random_number] = random_number
     return random_number;
   }
+
+
 
 
   // init()関数を実装
@@ -152,7 +162,7 @@ $(function() {
     mistake_cnt = 0;
     start_game = false;
     start_time = 0;
-
+    // fadeOut = false;
     countSelect.val('5');
 
     changeQuestionWord(getQuestionNumber());
@@ -184,26 +194,28 @@ $(function() {
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
+
     theme.html(newHtml);
     kana.text(THEME[index]['kana']);
+    // theme.show();
   }
 
 
-
 });
 
 
-$(function() {
 
-  // ボタンをクリックしたら発動
-  $(window).keydown(function(e){
-  // $('.text').keypress(function() {
-    console.log("test")
-    // class'show'を削除
-    // $('div').removeClass('#theme');
-        $('#theme').fadeOut();
+// $(function() {
 
-    console.log("test")
-    console.log(this)
-  });
-});
+//   // ボタンをクリックしたら発動
+//   $(window).keydown(function(e){
+//   // $('.text').keypress(function() {
+//     // console.log("test")
+//     // class'show'を削除
+//     // $('div').removeClass('#theme');
+//         $('#theme').fadeOut();
+
+//     // console.log("test")
+//     // console.log(this)
+//   });
+// });
