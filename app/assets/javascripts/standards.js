@@ -180,6 +180,7 @@ $(function() {
     for (var i = 0; i < max_length; i++) {
       newHtml += '<p id="str-'+(i+1)+'" class="text default">'+word[i]+'</p>';
     }
+    
     theme.html(newHtml);
     kana.text(THEME[index]['kana']);
   }

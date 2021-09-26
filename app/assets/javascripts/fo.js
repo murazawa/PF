@@ -126,7 +126,7 @@ $(function() {
     //       $('#theme').fadeOut();
     //   });
   });
-        $(window).keydown(function(e){
+        $(document).keydown(function(e){
           // theme.show();
           $('#theme').fadeOut();
 
@@ -199,7 +199,6 @@ $(function() {
     kana.text(THEME[index]['kana']);
     // theme.show();
   }
-
 
 });
 
