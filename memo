@@ -156,3 +156,5 @@ rake assets:precompile
 <%= javascript_include_tag '' %>
 
 Rails.application.config.assets.precompile << ''
+
+slow
