@@ -20,3 +20,16 @@
 //= require turbolinks
 //= require_tree .
 
+// $(function() {
+//   // ボタンをクリックしたら発動
+//   $('#content').keypress(function() {
+//   console.log("ok")
+//     // class'show'を削除
+//     $('div').removeClass('#theme');
+//     console.log(this)
+
+//   });
+// });
+
+
+
