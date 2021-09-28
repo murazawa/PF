@@ -17,7 +17,7 @@ $(function() {
 
   // 問題数
   var question_number = 1;
-  var question_limit = 5;
+  var question_limit = 9;
   var done_questions = {};
 
   // カウントする変数を３つ宣言
@@ -27,6 +27,7 @@ $(function() {
 
   var start_game = false;
   var start_time = 0;
+  // console.log($yomi)
 
   // 問題
   var MONDAI_LIST = [
@@ -75,9 +76,10 @@ $(function() {
     return;
   }
 
+
     typing_cnt++; // ①
 
-    var target = ('#str-'+str_index);
+    var target = $('#str-'+str_index);
     var str = target.text();
     // console.log("str")
     // console.log(str)
@@ -108,9 +110,9 @@ $(function() {
 
 
   function getQuestionNumber(){
-    var random_number = Math.floor(Math.random()*19);
+    var random_number = Math.floor(Math.random()*9);
     while (done_questions[random_number]!== undefined) {
-      random_number = Math.floor(Math.random()*19);
+      random_number = Math.floor(Math.random()*9);
     }
     done_questions[random_number] = random_number
     return random_number;
@@ -125,7 +127,7 @@ $(function() {
   function init(){
     str_index = 1;
     question_number = 1;
-    question_limit = 5;
+    question_limit = 9;
     done_question = {};
     typing_cnt = 0;
     correct_cnt = 0;
@@ -133,7 +135,7 @@ $(function() {
     start_game = false;
     start_time = 0;
 
-    countSelect.val('5');
+    countSelect.val('9');
 
     changeQuestionWord(getQuestionNumber());
     finishPanel.addClass('hidden');
@@ -146,6 +148,9 @@ $(function() {
 
 
   function finish() {
+  var gamescore = localStorage.getItem('score');
+  localStorage.clear();
+
     finishPanel.removeClass('hidden');
     yomi.hide();
     mondai.hide();
@@ -154,6 +159,17 @@ $(function() {
     var end_time = performance.now();
     var typing_time = ( (end_time - start_time) / 1000).toFixed(2);
     timeMessage.text('かかった時間：'+typing_time+'秒');
+
+  // .ajax({
+  //   url: '/games/syllabaries',
+  //   type: 'GET',
+  //   dataType: 'html',
+  //   async: true,
+  //   data: {
+  //     score: gamescore,
+  //   },
+  // });
+
 }
 
 
@@ -171,8 +187,4 @@ $(function() {
 });
 
 
-// JavaScriptの文字列は引用符で囲む必要があります。
-
-// var str = "Hello";
-// var str2 = 'Single quotes are ok too';
-// var phrase = `can embed ${str}`;
+// var done_questions = {}; ループしないやつ
